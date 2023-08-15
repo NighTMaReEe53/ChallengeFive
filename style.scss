@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+$boxOneColor: #e38525;
+$boxTwoColor: #016871;
+$boxThreeColor: #003f3e;
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Oswald", sans-serif;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: #f2f2f2;
+}
+
+.content {
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  .card {
+    flex-basis: 33.3%;
+    position: relative;
+    @media (min-width: 768px) and (max-width: 992px) {
+      flex-basis: 50%;
+      border-radius: 0 !important;
+    }
+    @media (min-width: 0px) and (max-width: 767px) {
+      flex-basis: 100%;
+      border-radius: 0 !important;
+    }
+    padding: 30px;
+    min-height: 500px;
+    &:first-child {
+      background-color: $boxOneColor;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+    .main-btn {
+      color: $boxOneColor;
+      &:hover::before {
+        background-color: $boxOneColor;
+      }
+    }
+    &:nth-child(2) {
+      background-color: $boxTwoColor;
+      .main-btn {
+        color: $boxTwoColor;
+        &:hover::before {
+          background-color: $boxTwoColor;
+        }
+      }
+    }
+    &:nth-child(3) {
+      background-color: $boxThreeColor;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      .main-btn {
+        color: $boxThreeColor;
+        &:hover::before {
+          background-color: $boxThreeColor;
+        }
+      }
+    }
+    .text {
+      margin-top: 40px;
+      h2 {
+        font-weight: bold;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 43px;
+        opacity: 0.9;
+      }
+      p {
+        margin-top: 30px;
+        color: #fff8;
+        line-height: 1.8;
+        font-size: 15px;
+      }
+    }
+    .main-btn {
+      position: absolute;
+      bottom: 50px;
+      width: 150px;
+      height: 40px;
+      border-radius: 25px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      overflow: hidden;
+      z-index: 1;
+      transition: 0.3s ease;
+      &:hover {
+        color: #fff;
+        border: 1px solid #fff;
+      }
+      &:hover::before {
+        left: 0;
+      }
+      &::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: -100%;
+        z-index: -1;
+        position: absolute;
+        transition: 0.3s ease;
+      }
+    }
+  }
+}
